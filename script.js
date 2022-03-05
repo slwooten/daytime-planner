@@ -22,7 +22,7 @@ saveBtn.on('click', saveClicked);
 
 // function to change color of sections according to time of day //
 function color () {
-    if (currentTime === '19') {
+    if (currentTime === '9') {
         textAreas[0].addClass('present');
         textAreas[1].addClass('future');  
         textAreas[2].addClass('future');  
@@ -136,7 +136,8 @@ function color () {
 }
 
 // function for saving which button was clicked, and info enter in associated text area into the local storage //
-function saveClicked () {
+function saveClicked (event) {
+    event.preventDefault();
     var buttonNum = $(this).attr('name');
     var textNum = $(this).parent().find('textarea').val();
 
@@ -144,8 +145,7 @@ function saveClicked () {
         console.log('Heres what we typed ->', textNum);
 
         localStorage.setItem(buttonNum, textNum);
-        localStorage.getItem(buttonNum, textNum);
-}
+        
+    }
 
 color();
-
